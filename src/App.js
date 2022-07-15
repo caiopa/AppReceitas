@@ -6,7 +6,6 @@ import Footer from './components/Footer';
 function App() {
   return (
     <div className="meals">
-      <span className="logo">TRYBE</span>
       <Footer />
     </div>
   );

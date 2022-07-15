@@ -1,36 +1,35 @@
 import React from 'react';
-import '../css/Footer.css';
-// import { Link } from 'react-router-dom';
+// import '../css/Footer.css';
+import { Link } from 'react-router-dom';
+import drinkIcon from '../images/drinkIcon.svg';
+import foodIcon from '../images/mealIcon.svg';
 
 function Footer() {
   return (
     <footer data-testid="footer" className="footerContainer">
-      {/* <Link to="/bebidas">
+
+      <Link to="/bebidas">
         <img
-          src="./images/drinkIcon.svg"
+          src={ drinkIcon }
           alt="bebidas"
           data-testid="drinks-bottom-btn"
         />
 
-      </Link> */}
-      <img
-        src="./images/drinkIcon.svg"
-        alt="bebidas"
-        data-testid="drinks-bottom-btn"
-      />
-      {/* <Link to="/comidas">
+      </Link>
+      {' '}
+      */
+
+      <Link to="/foods">
         <img
-          rc="./images/drinkIcon.svg"
+          src={ foodIcon }
           alt="comidas"
           data-testid="food-bottom-btn"
         />
 
-      </Link> */}
-      <img
-        src="./images/mealIcon.svg"
-        alt="comidas"
-        data-testid="food-bottom-btn"
-      />
+      </Link>
+      {' '}
+      */
+
     </footer>
   );
 }
