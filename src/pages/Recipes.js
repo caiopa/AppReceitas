@@ -1,9 +1,13 @@
 import React from 'react';
+import Header from '../components/Header';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Recipes() {
   return (
-    <h1>Recipes</h1>
+    <>
+      <Header title="Foods" search />
+      <p>pagina de comidas....</p>
+    </>
   );
 }
 
