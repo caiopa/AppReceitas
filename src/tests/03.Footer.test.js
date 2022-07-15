@@ -2,7 +2,7 @@ import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 import Footer from '../components/Footer';
-import renderWithRouter from './help/renderWithRouter';
+import renderWithRouter from './helpers/renderWithRouter';
 
 const btnDrinks = screen.getByTestId('drinks-bottom-btn');
 const btnMeal = screen.getByTestId('food-bottom-btn');
