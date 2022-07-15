@@ -7,14 +7,14 @@ import Login from './pages/Login';
 
 function App() {
   return (
-    <LoginProvider>
-      <BrowserRouter>
-        <Switch>
+    <BrowserRouter>
+      <Switch>
+        <LoginProvider>
           <Route exact path="/" component={ Login } />
-          {/* <Route path="/foods" component={ Recipes } /> */}
-        </Switch>
-      </BrowserRouter>
-    </LoginProvider>
+        </LoginProvider>
+        {/* <Route path="/foods" component={ Recipes } /> */}
+      </Switch>
+    </BrowserRouter>
   );
 }
 

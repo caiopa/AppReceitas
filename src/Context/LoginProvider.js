@@ -8,20 +8,20 @@ function LoginProvider({ children }) {
   const [password, setPassword] = useState('');
   const [isDisable, setIsDisable] = useState(true);
 
-  // https://stackoverflow.com/posts/9204568/revisions
-  const checkEmail = () => {
-    let isTrue = false;
-    if (email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) isTrue = true;
-
-    return isTrue;
-  };
-
-  const checkPassword = () => {
-    const six = 6;
-    return password.length > six;
-  };
-
   useEffect(() => {
+  // https://stackoverflow.com/posts/9204568/revisions
+    const checkEmail = () => {
+      let isTrue = false;
+      if (email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) isTrue = true;
+
+      return isTrue;
+    };
+
+    const checkPassword = () => {
+      const six = 6;
+      return password.length > six;
+    };
+
     const checkForm = () => {
       if (checkEmail() && checkPassword()) {
         setIsDisable(false);
