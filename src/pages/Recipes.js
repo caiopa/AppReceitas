@@ -6,7 +6,7 @@ function Recipes() {
   return (
     <>
       <Header title="Foods" search />
-      <p>pagina de comidas....</p>
+      <p>pagina de comidas.... mechendo lint</p>
     </>
   );
 }
