@@ -8,7 +8,6 @@ import renderWithRouter from './helpers/renderWithRouter';
 describe('Testa a página de Login', () => {
     beforeEach(() => {
         renderWithRouter(<App />)
-    });
 
     test('verifica se os inputs estão presentes na tela', () => {
         expect(screen.getByPlaceholderText(/email/i)).toBeInTheDocument();
