@@ -3,18 +3,18 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
 import LoginProvider from './Context/LoginProvider';
 import Login from './pages/Login';
-// import Recipes from './pages/Recipes';
+import Recipes from './pages/Recipes';
 
 function App() {
   return (
-    <BrowserRouter>
-      <Switch>
-        <LoginProvider>
+    <LoginProvider>
+      <BrowserRouter>
+        <Switch>
           <Route exact path="/" component={ Login } />
-        </LoginProvider>
-        {/* <Route path="/foods" component={ Recipes } /> */}
-      </Switch>
-    </BrowserRouter>
+          <Route path="/foods" component={ Recipes } />
+        </Switch>
+      </BrowserRouter>
+    </LoginProvider>
   );
 }
 
