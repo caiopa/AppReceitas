@@ -2,12 +2,13 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from '../App';
-// import Login from '../pages/Login';
+import Login from '../pages/Login';
 import renderWithRouter from './helpers/renderWithRouter';
 
 describe('Testa a página de Login', () => {
     beforeEach(() => {
         renderWithRouter(<App />)
+    });
 
     test('verifica se os inputs estão presentes na tela', () => {
         expect(screen.getByPlaceholderText(/email/i)).toBeInTheDocument();
