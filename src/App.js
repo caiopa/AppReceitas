@@ -16,12 +16,12 @@ function App() {
       <LoginProvider>
         <Route exact path="/" component={ Login } />
         <Route exact path="/foods">
-          <Recipes />
+          <Recipes page="Foods" />
           <Footer />
         </Route>
         <Route exact path="/foods/:id" component={ FoodDetail } />
         <Route exact path="/drinks">
-          <Recipes />
+          <Recipes page="Drinks" />
           <Footer />
         </Route>
         <Route exact path="/drinks/:id" component={ DrinkDetail } />

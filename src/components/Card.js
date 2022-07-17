@@ -4,23 +4,27 @@ import './Card.css';
 
 class Card extends React.Component {
   render() {
-    const { index, meal: { strMeal, strMealThumb } } = this.props;
+    const {
+      index,
+      recipe: { strMeal, strMealThumb, strDrink, strDrinkThumb },
+    } = this.props;
+    const drink = window.location.pathname === '/drinks';
     return (
       <div data-testid={ `${index}-recipe-card` } className="container">
         <img
-          src={ strMealThumb }
+          src={ drink ? strDrinkThumb : strMealThumb }
           data-testid={ `${index}-card-img` }
-          alt="meal"
+          alt={ drink ? 'drink' : 'meal' }
           className="card_img"
         />
-        <h1 data-testid={ `${index}-card-img` }>{strMeal}</h1>
+        <h1 data-testid={ `${index}-card-name` }>{drink ? strDrink : strMeal}</h1>
       </div>
     );
   }
 }
 
 Card.propTypes = {
-  meal: PropTypes.objectOf(PropTypes.string).isRequired,
+  recipe: PropTypes.objectOf(PropTypes.string).isRequired,
   index: PropTypes.number.isRequired,
 };
 

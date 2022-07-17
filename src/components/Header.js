@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import SearchBar from './SearchBar';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 import fetchMealApi from '../API/fetchMealApi';
@@ -30,17 +31,21 @@ class Header extends React.Component {
     }
     if (window.location.pathname === '/foods') {
       const results = await fetchMealApi(radio, searchText);
-      if (results.meals.length === 1) {
+      if (results.meals === null) {
+        return global.alert('Sorry, we haven\'t found any recipes for these filters.');
+      } if (results.meals.length === 1) {
         window.location.pathname = `/foods/${results.meals[0].idMeal}`;
       } else {
         callback(results.meals);
       }
     } else {
       const results = await fetchDrinkApi(radio, searchText);
-      if (results.drinks.length === 1) {
+      if (results.drinks === null) {
+        return global.alert('Sorry, we haven\'t found any recipes for these filters.');
+      } if (results.drinks.length === 1) {
         window.location.pathname = `/drinks/${results.drinks[0].idDrink}`;
       } else {
-        callback(results.meals);
+        callback(results.drinks);
       }
     }
   }
@@ -49,54 +54,11 @@ class Header extends React.Component {
     const { searchActive, searchText } = this.state;
     const { title, search } = this.props;
     const inputs = (
-      <>
-        <input
-          name="searchText"
-          value={ searchText }
-          onChange={ this.handleInputChange }
-          data-testid="search-input"
-        />
-        <label htmlFor="rdbIngredient">
-          Ingredient
-          <input
-            id="rdbIngredient"
-            type="radio"
-            data-testid="ingredient-search-radio"
-            value="ingredients"
-            name="radio"
-            onChange={ this.handleInputChange }
-          />
-        </label>
-        <label htmlFor="rdbName">
-          Name
-          <input
-            id="rdbName"
-            type="radio"
-            data-testid="name-search-radio"
-            value="name"
-            name="radio"
-            onChange={ this.handleInputChange }
-          />
-        </label>
-        <label htmlFor="rdbFirstLetter">
-          First letter
-          <input
-            id="rdbFirstLetter"
-            type="radio"
-            data-testid="first-letter-search-radio"
-            value="firstLetter"
-            name="radio"
-            onChange={ this.handleInputChange }
-          />
-        </label>
-        <button
-          type="button"
-          data-testid="exec-search-btn"
-          onClick={ this.btnSearchClick }
-        >
-          Search
-        </button>
-      </>
+      <SearchBar
+        searchText={ searchText }
+        handleInputChange={ this.handleInputChange }
+        btnSearchClick={ this.btnSearchClick }
+      />
     );
 
     return (
