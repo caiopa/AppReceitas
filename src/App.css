@@ -46,14 +46,13 @@ footer {
   font-weight: 900;
 }
 
-.container{
-  display: flex; 
+.container {
+  border: solid 1px black;
+  display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  border:solid 1px black
 }
 
-.main-container{
+.main-container {
   display: flex;
   flex-direction: column;
 }
