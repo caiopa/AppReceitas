@@ -2,7 +2,9 @@ import React from 'react';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Header from '../components/Header';
+import App from '../App';
 import renderWithRouter from './helpers/renderWithRouter';
+import { oneResult, moreResults, oneDrinkResult, moreDrinksResults } from './mocks/fetchMock';
 
 describe('testes do header', () => {
     it('o header renderiza corretamente com o search', () => {
