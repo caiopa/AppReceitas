@@ -3,6 +3,7 @@ import { screen, fireEvent } from '@testing-library/react';
 import App from '../App'
 import userEvent from '@testing-library/user-event'
 import renderWithRouter from './helpers/renderWithRouter';
+import Profile from '../pages/Profile';
 
 
 describe('Testa a página de Perfil', () => {
@@ -69,6 +70,12 @@ describe('Testa a página de Perfil', () => {
         userEvent.click(btnLogout)
         expect(history.location.pathname).toBe('/')
 
+    })
+
+    test('Test se o localStorage for null', () => {
+        renderWithRouter(<Profile />)
+        
+        expect(localStorage.getItem('user')).not.toBeNull;
     })
    
 });
