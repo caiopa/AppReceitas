@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import Header from '../components/Header';
 import App from '../App';
 import renderWithRouter from './helpers/renderWithRouter';
-import { oneResult, moreResults, oneDrinkResult, moreDrinksResults } from './mocks/fetchMock';
+import { oneResult, moreResults, oneDrinkResult, moreDrinksResults, mealButtons, drinkButtons } from './mocks/fetchMock';
 
 describe('testes do search bar', () => {
   it('um alerta é acionado caso first letter seja utilizado de maneira incorreta', () => {
@@ -28,12 +28,17 @@ describe('testes do search bar', () => {
 
     expect(global.alert).toHaveBeenCalledWith('Your search must have only 1 (one) character');
   });
-  it('a API das meals é chamada corretamente', () => {
+  it('a API das meals é chamada corretamente', async () => {
     const { history } = renderWithRouter(<App />);
 
-    global.fetch = jest.fn(() =>
+    global.fetch = jest.fn((endpoint) =>
       Promise.resolve({
-        json: () => Promise.resolve(moreResults),
+        json: () => {
+          if (endpoint === 'https://www.themealdb.com/api/json/v1/1/list.php?c=list') {
+            return Promise.resolve(mealButtons);
+          }
+          return Promise.resolve(moreResults);
+        }
       })
     );
 
@@ -41,6 +46,8 @@ describe('testes do search bar', () => {
 
     delete window.location
     window.location = new URL('http://localhost:3000/foods');
+
+    await new Promise((r) => setTimeout(r, 500));
 
     const search = screen.getByRole('button', { name: /search_icon/i });
 
@@ -51,6 +58,7 @@ describe('testes do search bar', () => {
     const name = screen.getByRole('radio', { name: /name/i });
     const textInput = screen.getByTestId('search-input');
     const searchButton = screen.getByTestId('exec-search-btn');
+    const beef = screen.getByTestId('Beef-category-filter');
 
     userEvent.type(textInput, 'a');
     userEvent.click(ingredient);
@@ -67,13 +75,25 @@ describe('testes do search bar', () => {
     userEvent.click(searchButton);
 
     expect(global.fetch).toHaveBeenCalledWith('https://www.themealdb.com/api/json/v1/1/search.php?f=a');
+
+    userEvent.click(beef);
+
+    expect(global.fetch).toHaveBeenCalledWith('https://www.themealdb.com/api/json/v1/1/filter.php?c=Beef');
   });
   it('um alerta é acionado se o retorno da API das meals é vazio', async () => {
     const { history } = renderWithRouter(<App />);
 
-    global.fetch = jest.fn(() =>
+    global.fetch = jest.fn((endpoint) =>
       Promise.resolve({
-        json: () => Promise.resolve({ meals: null }),
+        json: () => {
+          if (endpoint === 'https://www.themealdb.com/api/json/v1/1/search.php?s=') {
+            return Promise.resolve(moreResults);
+          }
+          if (endpoint === 'https://www.themealdb.com/api/json/v1/1/list.php?c=list') {
+            return Promise.resolve(mealButtons);
+          }
+          return Promise.resolve({ meals: null });
+        }
       })
     );
 
@@ -139,12 +159,17 @@ describe('testes do search bar', () => {
     expect(detalhe).toBeInTheDocument();
 
   })
-  it('a API dos drinks é chamada corretamente', () => {
+  it('a API dos drinks é chamada corretamente', async () => {
     const { history } = renderWithRouter(<App />);
 
-    global.fetch = jest.fn(() =>
+    global.fetch = jest.fn((endpoint) =>
       Promise.resolve({
-        json: () => Promise.resolve(moreDrinksResults),
+        json: () => {
+          if (endpoint === 'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list') {
+            return Promise.resolve(drinkButtons);
+          }
+          return Promise.resolve(moreDrinksResults);
+        }
       })
     );
 
@@ -152,6 +177,8 @@ describe('testes do search bar', () => {
 
     delete window.location
     window.location = new URL('http://localhost:3000/drinks');
+
+    await new Promise((r) => setTimeout(r, 500));
 
     const search = screen.getByRole('button', { name: /search_icon/i });
 
@@ -162,6 +189,7 @@ describe('testes do search bar', () => {
     const name = screen.getByRole('radio', { name: /name/i });
     const textInput = screen.getByTestId('search-input');
     const searchButton = screen.getByTestId('exec-search-btn');
+    const cocoa = screen.getByTestId('Cocoa-category-filter');
 
     userEvent.type(textInput, 'a');
     userEvent.click(ingredient);
@@ -178,13 +206,25 @@ describe('testes do search bar', () => {
     userEvent.click(searchButton);
 
     expect(global.fetch).toHaveBeenCalledWith('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a');
+
+    userEvent.click(cocoa);
+
+    expect(global.fetch).toHaveBeenCalledWith('https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocoa');
   });
   it('um alerta é acionado se o retorno da API dos drinks é vazio', async () => {
     const { history } = renderWithRouter(<App />);
 
-    global.fetch = jest.fn(() =>
+    global.fetch = jest.fn((endpoint) =>
       Promise.resolve({
-        json: () => Promise.resolve({ drinks: null }),
+        json: () => {
+          if (endpoint === 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=') {
+            return Promise.resolve(moreDrinksResults);
+          }
+          if (endpoint === 'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list') {
+            return Promise.resolve(drinkButtons);
+          }
+          return Promise.resolve({ drinks: null });
+        }
       })
     );
 
