@@ -1,3 +1,14 @@
+export const mealButtons = {
+    meals: [
+        {
+            strCategory: 'Beef',
+        },
+        {
+            strCategory: 'Goat',
+        },
+    ]
+}
+
 export const oneResult = {
     meals: [
         {
@@ -84,6 +95,17 @@ export const moreResults = {
             idMeal: '52767',
             strMeal: 'Bakewell',
             strMealThumb: 'https://www.themealdb.com/images/media/meals/wyrqqq1468233628.jpg',
+        },
+    ]
+}
+
+export const drinkButtons = {
+    drinks: [
+        {
+            strCategory: 'Shake',
+        },
+        {
+            strCategory: 'Cocoa',
         },
     ]
 }

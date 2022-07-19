@@ -5,7 +5,7 @@ class SearchBar extends React.Component {
   render() {
     const { searchText, handleInputChange, btnSearchClick } = this.props;
     return (
-      <>
+      <div>
         <input
           name="searchText"
           value={ searchText }
@@ -52,7 +52,7 @@ class SearchBar extends React.Component {
         >
           Search
         </button>
-      </>
+      </div>
     );
   }
 }
