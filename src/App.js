@@ -8,6 +8,7 @@ import Recipes from './pages/Recipes';
 import LoginProvider from './Context/LoginProvider';
 import Footer from './components/Footer';
 import RecipeDetails from './pages/RecipeDetails';
+import Profile from './pages/Profile';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route exact path="/drinks/:id" component={ RecipeDetails } />
         <Route path="/profile">
           <Header title="Profile" />
+          <Profile />
           <Footer />
         </Route>
         <Route path="/done-recipes"><Header title="Done Recipes" /></Route>

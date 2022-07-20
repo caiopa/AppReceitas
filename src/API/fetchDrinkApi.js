@@ -12,6 +12,18 @@ const fetchDrinkApi = async (type, value) => {
   //   return fetch(`www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${value}`)
   //     .then((response) => response.json())
   //     .then((data) => data);
+  case 'initial':
+    return fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=')
+      .then((response) => response.json())
+      .then((data) => data);
+  case 'category':
+    return fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${value}`)
+      .then((response) => response.json())
+      .then((data) => data);
+  case 'buttons':
+    return fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list')
+      .then((response) => response.json())
+      .then((data) => data);
   default:
     return fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${value}`)
       .then((response) => response.json())
