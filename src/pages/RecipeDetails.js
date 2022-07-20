@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Ingredients from '../components/Ingredients';
 
 function RecipeDetails() {
   const [type, setType] = useState('');
@@ -42,22 +43,11 @@ function RecipeDetails() {
     getRecomends();
   }, []);
 
-  const ings = Object.entries(recipe).filter((f) => f[0].includes('strIngredient'))
-    .filter((m) => m[1] !== '' && m[1] !== null);
-  const measures = Object.entries(recipe).filter((f) => f[0].includes('strMeasure'))
-    .filter((m) => m[1] !== '' && m[1] !== null);
-
-  const ingredientsBuilder = (ing, index) => (
-    <li key={ index } data-testid={ `${index}-ingredient-name-and-measure` }>
-      {`${ing[1]} (${measures[index][1]}) `}
-    </li>
-  );
-
   const buildCarousel = (food = true) => recomends.map((rec, i) => (food ? (
     <div
       key={ i }
       data-testid={ `${i}-recomendation-card` }
-      className="mr-3 mb-3"
+      // className="mr-3 mb-3"
     >
       <p data-testid={ `${i}-recomendation-title` }>{rec.strDrink}</p>
       <img src={ rec.strDrinkThumb } alt="" className="recomend-img" />
@@ -67,7 +57,7 @@ function RecipeDetails() {
       <div
         key={ i }
         data-testid={ `${i}-recomendation-card` }
-        className="mr-3 mb-3"
+        // className="mr-3 mb-3"
       >
         <p data-testid={ `${i}-recomendation-title` }>{rec.strMeal}</p>
         <img src={ rec.strMealThumb } alt="" className="recomend-img" />
@@ -90,21 +80,17 @@ function RecipeDetails() {
           </div>
           <div>
             <p data-testid="recipe-category">{recipe.strCategory}</p>
-            <label htmlFor="ingsList">
-              Ingredients:
-              <ul id="ingsList">
-                {ings.map((m, i) => ingredientsBuilder(m, i))}
-              </ul>
-            </label>
+            <Ingredients recipe={ recipe } />
             <p data-testid="instructions">{recipe.strInstructions}</p>
             {/* w3schools.com/html/html_youtube.asp */}
             <iframe
               data-testid="video"
               title={ `${recipe.strMeal} video` }
               src={ `https://www.youtube.com/embed/${youtubeID}` }
+              className="w-100"
             />
           </div>
-          <div className="d-flex">
+          <div className="d-flex scroll-menu">
             {
               buildCarousel()
             }
@@ -125,12 +111,7 @@ function RecipeDetails() {
           </div>
           <div>
             <p data-testid="recipe-category">{recipe.strAlcoholic}</p>
-            <label htmlFor="ingsList">
-              Ingredients:
-              <ul id="ingsList">
-                {ings.map((m, i) => ingredientsBuilder(m, i))}
-              </ul>
-            </label>
+            <Ingredients recipe={ recipe } />
             <p data-testid="instructions">{recipe.strInstructions}</p>
           </div>
           <div className="d-flex scroll-menu">
