@@ -57,6 +57,20 @@ footer {
   flex-direction: column;
 }
 
+.recomend-img {
+  width: 190px;
+}
+
+.scroll-menu {
+  display: flex;
+  overflow: auto;
+  white-space: nowrap;
+}
+
+div.scroll-menu a:hover {
+  background-color: #777;
+}
+
 @keyframes shake {
 
   0% {
