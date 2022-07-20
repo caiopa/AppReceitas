@@ -67,7 +67,7 @@ footer {
   white-space: nowrap;
 }
 
-div.scroll-menu a:hover {
+div.scroll-menu:hover {
   background-color: #777;
 }
 

@@ -17,19 +17,22 @@ function Recipes(props) {
 
   const { page } = props;
 
-  useEffect(async () => {
-    if (page === 'Foods') {
-      const { meals } = await fetchMealApi('initial');
-      setDefault(meals.filter((r, i) => i < MAXCARDS));
-      const { meals: buttons } = await fetchMealApi('buttons');
-      setButtons(buttons.map((b) => b.strCategory).filter((b, i) => i < MAXBUTTONS));
-    } else {
-      const { drinks } = await fetchDrinkApi('initial');
-      setDefault(drinks.filter((r, i) => i < MAXCARDS));
-      const { drinks: buttons } = await fetchDrinkApi('buttons');
-      setButtons(buttons.map((b) => b.strCategory).filter((b, i) => i < MAXBUTTONS));
-    }
-  }, []);
+  useEffect(() => {
+    const setPage = async () => {
+      if (page === 'Foods') {
+        const { meals } = await fetchMealApi('initial');
+        setDefault(meals.filter((r, i) => i < MAXCARDS));
+        const { meals: buttons } = await fetchMealApi('buttons');
+        setButtons(buttons.map((b) => b.strCategory).filter((b, i) => i < MAXBUTTONS));
+      } else {
+        const { drinks } = await fetchDrinkApi('initial');
+        setDefault(drinks.filter((r, i) => i < MAXCARDS));
+        const { drinks: buttons } = await fetchDrinkApi('buttons');
+        setButtons(buttons.map((b) => b.strCategory).filter((b, i) => i < MAXBUTTONS));
+      }
+    };
+    setPage();
+  }, [page]);
 
   const handleAllClick = () => {
     setResults(defaultResults);
