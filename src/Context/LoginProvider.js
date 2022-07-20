@@ -7,6 +7,7 @@ function LoginProvider({ children }) {
   const [password, setPassword] = useState('');
   const [isDisable, setIsDisable] = useState(true);
   const [type, setType] = useState('');
+  const [recipe, setRecipe] = useState({});
 
   useEffect(() => {
   // https://stackoverflow.com/posts/9204568/revisions
@@ -46,12 +47,14 @@ function LoginProvider({ children }) {
     password,
     isDisable,
     type,
+    recipe,
   };
 
   const funcs = {
     setLogin,
     setIsDisable,
     setType,
+    setRecipe,
   };
 
   return (

@@ -1,12 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Ingredients from '../components/Ingredients';
+import DetailButtons from '../components/DetailButtons';
+import LoginContext from '../Context/LoginContext';
 
 function RecipeDetails() {
   const [type, setType] = useState('');
-  const [recipe, setRecipe] = useState({});
+  // const [recipe, setRecipe] = useState({});
   const [youtubeID, setYoutubeID] = useState('');
   const [recomends, setsetRecomends] = useState([]);
+
+  const { vars: { recipe }, funcs: { setRecipe } } = useContext(LoginContext);
 
   useEffect(() => {
     const path = window.location.pathname.split('/')[1];
@@ -47,7 +51,6 @@ function RecipeDetails() {
     <div
       key={ i }
       data-testid={ `${i}-recomendation-card` }
-      // className="mr-3 mb-3"
     >
       <p data-testid={ `${i}-recomendation-title` }>{rec.strDrink}</p>
       <img src={ rec.strDrinkThumb } alt="" className="recomend-img" />
@@ -57,7 +60,6 @@ function RecipeDetails() {
       <div
         key={ i }
         data-testid={ `${i}-recomendation-card` }
-        // className="mr-3 mb-3"
       >
         <p data-testid={ `${i}-recomendation-title` }>{rec.strMeal}</p>
         <img src={ rec.strMealThumb } alt="" className="recomend-img" />
@@ -95,6 +97,7 @@ function RecipeDetails() {
               buildCarousel()
             }
           </div>
+          <DetailButtons />
         </section>
       )
       : (
@@ -119,6 +122,7 @@ function RecipeDetails() {
               buildCarousel(false)
             }
           </div>
+          <DetailButtons />
         </section>
       )
   );

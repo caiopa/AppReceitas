@@ -30,7 +30,7 @@ function Ingredients({ recipe }) {
 }
 
 Ingredients.propTypes = {
-  recipe: PropTypes.objectOf().isRequired,
+  recipe: PropTypes.objectOf(PropTypes.string).isRequired,
 };
 
 export default Ingredients;
