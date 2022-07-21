@@ -8,10 +8,10 @@ const fetchDrinkApi = async (type, value) => {
     return fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${value}`)
       .then((response) => response.json())
       .then((data) => data);
-  // case 'id':
-  //   return fetch(`www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${value}`)
-  //     .then((response) => response.json())
-  //     .then((data) => data);
+  case 'id':
+    return fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${value}`)
+      .then((response) => response.json())
+      .then((data) => data);
   case 'initial':
     return fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=')
       .then((response) => response.json())
