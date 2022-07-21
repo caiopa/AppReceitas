@@ -3,6 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Ingredients from '../components/Ingredients';
 import DetailButtons from '../components/DetailButtons';
 import LoginContext from '../Context/LoginContext';
+import fetchMealApi from '../API/fetchMealApi';
+import fetchDrinkApi from '../API/fetchDrinkApi';
 
 function RecipeDetails() {
   const [type, setType] = useState('');
@@ -20,13 +22,15 @@ function RecipeDetails() {
     const getRecipe = async () => {
       let data = {};
       if (path === 'foods') {
-        const promise = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
-        data = await promise.json();
+        // const promise = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`); // 'id'
+        // data = await promise.json();
+        data = await fetchMealApi('id', id);
         setRecipe(data.meals[0]);
         setYoutubeID(data.meals[0].strYoutube.split('=')[1]);
       } else {
-        const promise = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`);
-        data = await promise.json();
+        // const promise = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`);
+        // data = await promise.json();
+        data = await fetchDrinkApi('id', id);
         setRecipe(data.drinks[0]);
       }
     };
@@ -34,18 +38,20 @@ function RecipeDetails() {
       const seis = 6;
       let data = {};
       if (path === 'foods') {
-        const promise = await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=');
-        data = await promise.json();
+        // const promise = await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s='); // 'initial'
+        // data = await promise.json();
+        data = await fetchDrinkApi('initial');
         setsetRecomends(data.drinks.slice(0, seis));
       } else {
-        const promise = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=');
-        data = await promise.json();
+        // const promise = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=');
+        // data = await promise.json();
+        data = await fetchMealApi('initial');
         setsetRecomends(data.meals.slice(0, seis));
       }
     };
     getRecipe();
     getRecomends();
-  }, []);
+  }, [setRecipe]);
 
   const buildCarousel = (food = true) => recomends.map((rec, i) => (food ? (
     <div
