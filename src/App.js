@@ -9,6 +9,7 @@ import LoginProvider from './Context/LoginProvider';
 import Footer from './components/Footer';
 import RecipeDetails from './pages/RecipeDetails';
 import Profile from './pages/Profile';
+import RecipeInProgress from './pages/RecipeInProgress';
 
 function App() {
   return (
@@ -20,13 +21,13 @@ function App() {
           <Footer />
         </Route>
         <Route exact path="/foods/:id" component={ RecipeDetails } />
-        {/* <Route exact path="/foods/:id/in-progress" component={ RecipeInProgress } /> */}
+        <Route exact path="/foods/:id/in-progress" component={ RecipeInProgress } />
         <Route exact path="/drinks">
           <Recipes page="Drinks" />
           <Footer />
         </Route>
         <Route exact path="/drinks/:id" component={ RecipeDetails } />
-        {/* <Route exact path="/drinks/:id/in-progress" component={ RecipeInProgress } /> */}
+        <Route exact path="/drinks/:id/in-progress" component={ RecipeInProgress } />
         <Route path="/profile">
           <Header title="Profile" />
           <Profile />
