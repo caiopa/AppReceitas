@@ -151,13 +151,6 @@ describe('testes do search bar', () => {
     await new Promise((r) => setTimeout(r, 500));
 
     expect(window.location.pathname).toBe('/foods/52767');
-
-    history.push(window.location.pathname);
-
-    const detalhe = screen.getByText(/pagina de detalhe do meal\.\.\.\./i);
-
-    expect(detalhe).toBeInTheDocument();
-
   })
   it('a API dos drinks é chamada corretamente', async () => {
     const { history } = renderWithRouter(<App />);
@@ -282,13 +275,6 @@ describe('testes do search bar', () => {
     await new Promise((r) => setTimeout(r, 500));
 
     expect(window.location.pathname).toBe('/drinks/52767');
-
-    history.push(window.location.pathname);
-
-    const detalhe = screen.getByText(/pagina de detalhe do drink\.\.\.\./i);
-
-    expect(detalhe).toBeInTheDocument();
-
   })
 
 })

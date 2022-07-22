@@ -22,7 +22,7 @@ function DetailButtons() {
         const listaIDs = [];
         Object.values(progress).forEach((v) => Object.keys(v)
           .forEach((k) => listaIDs.push(k)));
-        if (listaIDs.some((id) => id === recipe.idDrink || recipe.idMeal)) {
+        if (listaIDs.some((id) => id === recipe.idDrink || id === recipe.idMeal)) {
           setBtnStartText('Continue Recipe');
         }
       }
@@ -31,7 +31,8 @@ function DetailButtons() {
     const isRecipeFav = () => {
       const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
       if (favoriteRecipes && favoriteRecipes.length > 0
-        && !(favoriteRecipes.some((f) => f.id === recipe.idDrink || recipe.idMeal))) {
+        && (favoriteRecipes
+          .some((f) => f.id === recipe.idDrink || f.id === recipe.idMeal))) {
         setIsFav(true);
         setFavImage(blackHeartIcon);
       }
@@ -43,7 +44,7 @@ function DetailButtons() {
     const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
     if (doneRecipes === null) return true;
     const show = doneRecipes
-      .some((r) => (r.id === recipe.idDrink || recipe.idMeal));
+      .some((r) => (r.id === recipe.idDrink || r.id === recipe.idMeal));
     return !show;
   };
 
@@ -96,7 +97,7 @@ function DetailButtons() {
   const removeFromFavorites = (favoriteRecipes) => {
     if (favoriteRecipes) {
       const newFavList = favoriteRecipes
-        .filter((fav) => fav.id === recipe.idDrink && recipe.idMeal);
+        .filter((fav) => fav.id !== recipe.idDrink && fav.id !== recipe.idMeal);
       localStorage.setItem('favoriteRecipes', JSON.stringify(newFavList));
       setIsFav(false);
     }

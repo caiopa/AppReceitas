@@ -24,12 +24,14 @@ function RecipeDetails() {
       if (path === 'foods') {
         // const promise = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`); // 'id'
         // data = await promise.json();
+        console.log('foods');
         data = await fetchMealApi('id', id);
         setRecipe(data.meals[0]);
         setYoutubeID(data.meals[0].strYoutube.split('=')[1]);
       } else {
         // const promise = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`);
         // data = await promise.json();
+        console.log('drinks');
         data = await fetchDrinkApi('id', id);
         setRecipe(data.drinks[0]);
       }
