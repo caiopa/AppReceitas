@@ -138,7 +138,7 @@ function DetailButtons() {
         onClick={ btnFavoriteClick }
         src={ favImage }
       >
-        <img src={ favImage } alt="asd" />
+        <img src={ favImage } alt="fav button" />
       </button>
       <button
         type="button"
@@ -148,7 +148,7 @@ function DetailButtons() {
       >
         {btnShareText}
         {' '}
-        <img src={ shareIcon } alt="asd" />
+        <img src={ shareIcon } alt="share button" />
       </button>
     </div>
   );
