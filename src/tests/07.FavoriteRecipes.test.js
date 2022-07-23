@@ -5,7 +5,6 @@ import App from '../App';
 import Login from '../pages/Login';
 import renderWithRouter from './helpers/renderWithRouter';
 import FavoriteRecipes from '../pages/FavoriteRecipes';
-import localStorage from './mocks/mocksLocal';
 
 const receitas = [
     {
