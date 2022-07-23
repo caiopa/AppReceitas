@@ -9,6 +9,7 @@ import LoginProvider from './Context/LoginProvider';
 import Footer from './components/Footer';
 import RecipeDetails from './pages/RecipeDetails';
 import Profile from './pages/Profile';
+import FavoriteRecipes from './pages/FavoriteRecipes';
 
 function App() {
   return (
@@ -33,7 +34,10 @@ function App() {
           <Footer />
         </Route>
         <Route path="/done-recipes"><Header title="Done Recipes" /></Route>
-        <Route path="/favorite-recipes"><Header title="Favorite Recipes" /></Route>
+        <Route path="/favorite-recipes">
+          <Header title="Favorite Recipes" />
+          <FavoriteRecipes />
+        </Route>
       </LoginProvider>
     </Switch>
   );

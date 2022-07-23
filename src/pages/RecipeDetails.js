@@ -80,7 +80,8 @@ function RecipeDetails() {
           <div>
             <h2 data-testid="recipe-title">{recipe.strMeal}</h2>
             <img
-              className="w-100"
+              height={ 100 }
+              className="w-10 0"
               data-testid="recipe-photo"
               src={ recipe.strMealThumb }
               alt="meal thumbnail"
