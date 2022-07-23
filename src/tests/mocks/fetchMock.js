@@ -13,8 +13,14 @@ export const oneResult = {
     meals: [
         {
             idMeal: '52767',
-            strMeal: 'Bakewell',
+            strMeal: 'Roasted Goat',
+            strCategory: 'Goat',
             strMealThumb: 'https://www.themealdb.com/images/media/meals/wyrqqq1468233628.jpg',
+            strIngredient1: 'Goat Meat',
+            strIngredient2: 'Salt',
+            strInstructions: 'JUST DO IT',
+            strMeasure1: '1 kg',
+            strMeasure2: 'Pinch',
         }
     ]
 }
@@ -92,8 +98,8 @@ export const moreResults = {
             strMealThumb: 'https://www.themealdb.com/images/media/meals/wyrqqq1468233628.jpg',
         },
         {
-            idMeal: '52767',
-            strMeal: 'Bakewell',
+            idMeal: '99999',
+            strMeal: 'Roasted Goat',
             strMealThumb: 'https://www.themealdb.com/images/media/meals/wyrqqq1468233628.jpg',
         },
     ]
@@ -114,8 +120,14 @@ export const oneDrinkResult = {
     drinks: [
         {
             idDrink: '52767',
-            strDrink: 'Bakewell',
+            strDrink: 'Orange Juice',
+            strAlcoholic: 'Alcoholic',
             strDrinkThumb: 'https://www.themealdb.com/images/media/meals/wyrqqq1468233628.jpg',
+            strIngredient1: 'Orange',
+            strIngredient2: 'Ice',
+            strInstructions: 'Squeeze them hard',
+            strMeasure1: 'as needed',
+            strMeasure2: 'Cubes',
         }
     ]
 }

@@ -38,9 +38,6 @@ class IngredientCheck extends React.Component {
 
     const boolArray = new Array(ingredients.length).fill(false);
 
-    if (list.length === 0) {
-      return boolArray;
-    }
     const ingredientsIndex = list.map((i) => ingredients.indexOf(i));
     ingredientsIndex.forEach((i) => {
       boolArray[i] = true;

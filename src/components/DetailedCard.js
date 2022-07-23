@@ -87,7 +87,7 @@ class DetailedCard extends React.Component {
         this.setState({ favBtnImg: whiteHeartIcon });
       } else {
         localStorage.setItem(
-          'favoriteRecipes', JSON.stringify(favoriteRecipes.push(this.favoriteObject())),
+          'favoriteRecipes', JSON.stringify([...favoriteRecipes, this.favoriteObject()]),
         );
         this.setState({ favBtnImg: blackHeartIcon });
       }
