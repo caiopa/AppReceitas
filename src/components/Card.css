@@ -1,3 +1,7 @@
 .card_img {
   width: 60%;
 }
+
+.ingredient-done {
+  text-decoration: line-through;
+}
