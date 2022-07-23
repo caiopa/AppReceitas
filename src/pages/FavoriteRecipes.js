@@ -59,7 +59,7 @@ function FavoriteRecipes() {
     <div>
       <ButtonFilter onClick={ changeCategory } />
       {
-        recipe.map((receita, i) => (
+        recipe && recipe.map((receita, i) => (
           <div key={ receita.name }>
             <Link
               to={ verificarTipo(receita) === false
