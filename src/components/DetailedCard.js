@@ -102,6 +102,22 @@ class DetailedCard extends React.Component {
     }
   }
 
+  handleFinalizeButton = () => {
+    const { recipe: { strTags } } = this.props;
+    const doneObject = this.favoriteObject();
+    const date = new Date();
+    const storage = JSON.parse(localStorage.getItem('doneRecipes'));
+
+    doneObject.doneDate = date;
+    doneObject.tags = !strTags ? [] : strTags.split(', ');
+
+    if (!storage) {
+      localStorage.setItem('doneRecipes', JSON.stringify([doneObject]));
+    } else {
+      localStorage.setItem('doneRecipes', JSON.stringify([...storage, doneObject]));
+    }
+  }
+
   render() {
     const { favBtnImg, materials, shareBtnText, finishDisabled } = this.state;
     const {
@@ -156,6 +172,7 @@ class DetailedCard extends React.Component {
             type="button"
             disabled={ finishDisabled }
             data-testid="finish-recipe-btn"
+            onClick={ this.handleFinalizeButton }
           >
             finalizar
           </button>

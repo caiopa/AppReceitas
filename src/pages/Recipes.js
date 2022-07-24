@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import CardList from '../components/CardList';
+import LoginContext from '../Context/LoginContext';
 import fetchMealApi from '../API/fetchMealApi';
 import fetchDrinkApi from '../API/fetchDrinkApi';
 
@@ -10,6 +11,7 @@ const MAXCARDS = 12;
 const MAXBUTTONS = 5;
 
 function Recipes(props) {
+  const { funcs: { setRecipe } } = useContext(LoginContext);
   const [currentFilter, setFilter] = useState('');
   const [results, setResults] = useState([]);
   const [defaultResults, setDefault] = useState([]);
@@ -18,6 +20,7 @@ function Recipes(props) {
   const { page } = props;
 
   useEffect(async () => {
+    setRecipe({});
     if (page === 'Foods') {
       const { meals } = await fetchMealApi('initial');
       setDefault(meals.filter((r, i) => i < MAXCARDS));

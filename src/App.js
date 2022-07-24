@@ -11,6 +11,7 @@ import RecipeDetails from './pages/RecipeDetails';
 import Profile from './pages/Profile';
 import RecipeInProgress from './pages/RecipeInProgress';
 import FavoriteRecipes from './pages/FavoriteRecipes';
+import DoneRecipes from './pages/DoneRecipes';
 
 function App() {
   return (
@@ -34,7 +35,7 @@ function App() {
           <Profile />
           <Footer />
         </Route>
-        <Route path="/done-recipes"><Header title="Done Recipes" /></Route>
+        <Route path="/done-recipes"><DoneRecipes /></Route>
         <Route path="/favorite-recipes">
           <Header title="Favorite Recipes" />
           <FavoriteRecipes />
