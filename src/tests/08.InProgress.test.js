@@ -1,9 +1,9 @@
 import React from 'react';
-import { findByTestId, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from '../App';
 import renderWithRouter from './helpers/renderWithRouter';
-import { oneResult, moreResults, oneDrinkResult, moreDrinksResults, mealButtons, drinkButtons } from './mocks/fetchMock';
+import { oneResult, oneDrinkResult } from './mocks/fetchMock';
 
 describe('testes do componente InProgress', () => {
   it('a pagina foods in progress renderiza corretamente', async () => {

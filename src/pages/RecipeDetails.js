@@ -20,34 +20,22 @@ function RecipeDetails() {
     const id = window.location.pathname.split('/')[2];
 
     const getRecipe = async () => {
-      let data = {};
       if (path === 'foods') {
-        // const promise = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`); // 'id'
-        // data = await promise.json();
-        console.log('foods');
-        data = await fetchMealApi('id', id);
+        const data = await fetchMealApi('id', id);
         setRecipe(data.meals[0]);
         setYoutubeID(data.meals[0].strYoutube.split('=')[1]);
       } else {
-        // const promise = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`);
-        // data = await promise.json();
-        console.log('drinks');
-        data = await fetchDrinkApi('id', id);
+        const data = await fetchDrinkApi('id', id);
         setRecipe(data.drinks[0]);
       }
     };
     const getRecomends = async () => {
       const seis = 6;
-      let data = {};
       if (path === 'foods') {
-        // const promise = await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s='); // 'initial'
-        // data = await promise.json();
-        data = await fetchDrinkApi('initial');
+        const data = await fetchDrinkApi('initial');
         setRecomends(data.drinks.slice(0, seis));
       } else {
-        // const promise = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=');
-        // data = await promise.json();
-        data = await fetchMealApi('initial');
+        const data = await fetchMealApi('initial');
         setRecomends(data.meals.slice(0, seis));
       }
     };

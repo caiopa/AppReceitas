@@ -3,7 +3,7 @@ import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from '../App';
 import renderWithRouter from './helpers/renderWithRouter';
-import { oneResult, moreResults, oneDrinkResult, moreDrinksResults, mealButtons, drinkButtons } from './mocks/fetchMock';
+import { oneResult, moreResults, mealButtons } from './mocks/fetchMock';
 
 describe('testes do componente Recipes', () => {
   it('o botão All funciona corretamente', async () => {
