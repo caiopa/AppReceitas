@@ -20,12 +20,12 @@ function Profile() {
   };
 
   return (
-    <div>
-      <p data-testid="profile-email">
-        { email }
-
+    <div id="profile-box">
+      <p data-testid="profile-email" id="profile-email">
+        { `Email: ${email}` }
       </p>
       <button
+        className='btn details-buttons'
         type="button"
         data-testid="profile-done-btn"
         name="done"
@@ -34,6 +34,7 @@ function Profile() {
         Done Recipes
       </button>
       <button
+        className='btn mt-3 details-buttons'
         name="favorites"
         data-testid="profile-favorite-btn"
         type="button"
@@ -42,6 +43,7 @@ function Profile() {
         Favorite Recipes
       </button>
       <button
+        className='btn mt-3 details-buttons'
         name="logout"
         type="button"
         data-testid="profile-logout-btn"

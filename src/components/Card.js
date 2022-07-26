@@ -13,14 +13,14 @@ class Card extends React.Component {
     const drink = pathname === '/drinks';
     return (
       <Link to={ `${pathname}/${drink ? idDrink : idMeal}` }>
-        <div data-testid={ `${index}-recipe-card` } className="container">
+        <div data-testid={ `${index}-recipe-card` } className="recipe-card-container">
+          <h1 data-testid={ `${index}-card-name` } className="mb-3">{drink ? strDrink : strMeal}</h1>
           <img
             src={ drink ? strDrinkThumb : strMealThumb }
             data-testid={ `${index}-card-img` }
             alt={ drink ? 'drink' : 'meal' }
-            className="card_img"
+            className="recomend-img"
           />
-          <h1 data-testid={ `${index}-card-name` }>{drink ? strDrink : strMeal}</h1>
         </div>
       </Link>
     );

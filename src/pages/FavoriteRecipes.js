@@ -60,64 +60,57 @@ function FavoriteRecipes() {
       <ButtonFilter onClick={ changeCategory } />
       {
         recipe && recipe.map((receita, i) => (
-          <div key={ receita.name }>
+          <div key={ receita.name } id="favorites-card">
             <Link
               to={ verificarTipo(receita) === false
                 ? `/drinks/${receita.id}`
                 : `/foods/${receita.id}` }
             >
-              <p data-testid={ `${i}-horizontal-name` }>
+              <h2 data-testid={ `${i}-horizontal-name` }>
                 {receita.name}
-              </p>
+              </h2>
             </Link>
-            <p
-              data-testid={ `${i}-horizontal-top-text` }
-            >
-              {receita.nationality}
-              {' '}
-              -
-              {' '}
-              {receita.category}
-            </p>
-            <p
-              data-testid={ `${i}-horizontal-top-text` }
-            >
-              { (receita.alcoholicOrNot) ? receita.alcoholicOrNot : null }
-
-            </p>
             <Link
               to={ verificarTipo(receita) === false
                 ? `/drinks/${receita.id}`
                 : `/foods/${receita.id}` }
             >
               <img
+                className='recomend-img'
                 src={ receita.image }
                 alt="receita"
-                width={ 150 }
-                height={ 150 }
                 data-testid={ `${i}-horizontal-image` }
               />
             </Link>
-
-            <input
-              type="image"
-              src={ blackHeartIcon }
-              alt="favIcon"
-              onClick={ () => handleClick(receita.id) }
-              data-testid={ `${i}-horizontal-favorite-btn` }
-            />
-
-            <input
-              type="image"
-              src={ shareIcon }
-              data-testid={ `${i}-horizontal-share-btn` }
-              onClick={ () => btnShareClick((receita.type === 'food')
-                ? 'foods' : 'drinks', receita.id) }
-              alt="searchIcon"
-
-            />
-            {btnShareText}
-
+            <h4
+              data-testid={ `${i}-horizontal-top-text` }
+            >
+              { receita.type === 'food' ? `${receita.nationality} - ${receita.category}` : receita.category}
+            </h4>
+            <p
+              data-testid={ `${i}-horizontal-top-text` }
+            >
+              { (receita.alcoholicOrNot) ? receita.alcoholicOrNot : null }
+            </p>
+            <div id="favorites-buttons">
+              <input
+                className='btn details-buttons'
+                type="image"
+                src={ blackHeartIcon }
+                alt="favIcon"
+                onClick={ () => handleClick(receita.id) }
+                data-testid={ `${i}-horizontal-favorite-btn` }
+              />
+              <input
+                className='btn details-buttons'
+                type="image"
+                src={ shareIcon }
+                data-testid={ `${i}-horizontal-share-btn` }
+                onClick={ () => btnShareClick((receita.type === 'food')
+                  ? 'foods' : 'drinks', receita.id) }
+                alt="searchIcon"
+              />
+            </div>
           </div>))
       }
     </div>

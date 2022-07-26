@@ -25,32 +25,34 @@ class DoneCard extends React.Component {
       },
     } = this.props;
     return (
-      <div>
+      <div id="done-card">
+        <Link to={ `/${type}s/${id}` }>
+          <h2 data-testid={ `${index}-horizontal-name` }>{ name }</h2>
+        </Link>
         <Link to={ `/${type}s/${id}` }>
           <img
             data-testid={ `${index}-horizontal-image` }
             src={ image }
             alt={ type }
-            className="card_img"
+            className="recomend-img"
           />
         </Link>
-        <h2 data-testid={ `${index}-horizontal-top-text` }>
+        <h3 data-testid={ `${index}-horizontal-top-text` }>
           {type === 'food' ? `${nationality} - ${category}` : alcoholicOrNot}
-        </h2>
-        <Link to={ `/${type}s/${id}` }>
-          <h1 data-testid={ `${index}-horizontal-name` }>{ name }</h1>
-        </Link>
-        <h2 data-testid={ `${index}-horizontal-done-date` }>{ doneDate }</h2>
+        </h3>
+        <h4 data-testid={ `${index}-horizontal-done-date` }>{ doneDate }</h4>
+        <div id="done-button-category">
+          {tags.map((tag) => (
+            <h4 data-testid={ `${index}-${tag}-horizontal-tag` } key={ tag } className="done-category">{tag}</h4>))}
+        </div>
         <input
+          className='btn details-buttons'
           type="image"
           data-testid={ `${index}-horizontal-share-btn` }
           src={ shareIcon }
           alt="share-button"
           onClick={ () => this.btnShareClick(type, id) }
         />
-        {btnShareMessage && 'Link copied!'}
-        {tags.map((tag) => (
-          <h2 data-testid={ `${index}-${tag}-horizontal-tag` } key={ tag }>{tag}</h2>))}
       </div>
     );
   }

@@ -70,16 +70,18 @@ class IngredientCheck extends React.Component {
     const { materials: { ingredients, measure } } = this.props;
     const { checks } = this.state;
     return (
-      <ol>
+      <ol id='inProgress-ol'>
         {ingredients.map((ing, i) => (
           <li
             key={ i }
             data-testid={ `${i}-ingredient-step` }
+            className="inProgress-li"
           >
             <input
-              defaultChecked={ checks[i] || false }
+              checked={ checks[i] || false }
               onChange={ () => this.handleChecks(i) }
               type="checkbox"
+              className='mr-1'
             />
             <span className={ checks[i] ? 'ingredient-done' : '' }>
               {measure[i] ? `${ing} (${measure[i]})` : ing}

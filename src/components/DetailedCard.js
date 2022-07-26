@@ -106,10 +106,11 @@ class DetailedCard extends React.Component {
     const { recipe: { strTags } } = this.props;
     const doneObject = this.favoriteObject();
     const date = new Date();
+    const formatedDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
     const storage = JSON.parse(localStorage.getItem('doneRecipes'));
 
-    doneObject.doneDate = date;
-    doneObject.tags = !strTags ? [] : strTags.split(', ');
+    doneObject.doneDate = formatedDate;
+    doneObject.tags = !strTags ? [] : strTags.split(',').filter((p) => p !== '' && p !== ' ');
 
     if (!storage) {
       localStorage.setItem('doneRecipes', JSON.stringify([doneObject]));
@@ -130,53 +131,65 @@ class DetailedCard extends React.Component {
 
     return (
       <div>
-        <img
-          className="card_img"
-          src={ drink ? strDrinkThumb : strMealThumb }
-          data-testid="recipe-photo"
-          alt={ drink ? 'drink' : 'meal' }
-        />
-        <h1 data-testid="recipe-title">{drink ? strDrink : strMeal}</h1>
-        <h2 data-testid="recipe-category">{drink ? strAlcoholic : strCategory}</h2>
-        {
-          materials
-            ? (
-              <IngredientCheck
-                materials={ materials }
-                id={ id }
-                page={ page }
-                isFinishDisabled={ this.isFinishDisabled }
-              />
-            )
-            : (<div>carregando</div>)
-        }
-        <p data-testid="instructions">{strInstructions}</p>
-        <button
-          type="button"
-          data-testid="share-btn"
-          onClick={ this.btnShareClick }
-          src={ shareIcon }
-        >
-          {shareBtnText}
-          <img src={ shareIcon } alt="share-button" />
-        </button>
-        <input
-          type="image"
-          data-testid="favorite-btn"
-          onClick={ this.btnFavClick }
-          src={ favBtnImg }
-          alt="favorite-button"
-        />
-        <Link to="/done-recipes">
-          <button
-            type="button"
-            disabled={ finishDisabled }
-            data-testid="finish-recipe-btn"
-            onClick={ this.handleFinalizeButton }
-          >
-            finalizar
-          </button>
-        </Link>
+        <h1 id="inProgress-header">In Progress</h1>
+        <div id="inProgress-food">
+          <h2 data-testid="recipe-title">{drink ? strDrink : strMeal}</h2>
+          <img
+            className="recomend-img"
+            src={ drink ? strDrinkThumb : strMealThumb }
+            data-testid="recipe-photo"
+            alt={ drink ? 'drink' : 'meal' }
+          />
+          <p data-testid="recipe-category">{drink ? strAlcoholic : strCategory}</p>
+        </div>
+        <div id="inProgress-ingredients">
+          <h2>Ingredients</h2>
+          {
+            materials
+              ? (
+                <IngredientCheck
+                  materials={ materials }
+                  id={ id }
+                  page={ page }
+                  isFinishDisabled={ this.isFinishDisabled }
+                />
+              )
+              : (<div>carregando</div>)
+          }
+        </div>
+        <div id="inProgress-instructions">
+          <h2>Instructions</h2>
+          <p data-testid="instructions" id="inProgress-instructions-text">{strInstructions}</p>
+        </div>
+        <div id="inProgress-buttons-box">
+          <input
+            type="image"
+            data-testid="favorite-btn"
+            onClick={ this.btnFavClick }
+            src={ favBtnImg }
+            alt="favorite-button"
+            className='btn details-buttons'
+          />
+          <input
+            type="image"
+            data-testid="share-btn"
+            onClick={ this.btnShareClick }
+            src={ shareIcon }
+            alt="share-button"
+            className='btn details-buttons'
+          />
+          <Link to="/done-recipes">
+            <button
+              type="button"
+              disabled={ finishDisabled }
+              data-testid="finish-recipe-btn"
+              onClick={ this.handleFinalizeButton }
+              className='btn details-buttons'
+            >
+              Finish
+            </button>
+          </Link>
+        </div>
       </div>
     );
   }

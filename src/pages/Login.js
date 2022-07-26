@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import LoginContext from '../Context/LoginContext';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Login() {
   const {
@@ -22,32 +21,38 @@ function Login() {
   };
 
   return (
-    <form className="d-flex flex-column align-items-center">
-      <input
-        type="text"
-        name="email"
-        placeholder="Email"
-        data-testid="email-input"
-        onChange={ handleChange }
-      />
-      <input
-        type="password"
-        name="password"
-        placeholder="Password"
-        data-testid="password-input"
-        onChange={ handleChange }
-      />
-      <Link to="/foods">
-        <button
-          type="button"
-          data-testid="login-submit-btn"
-          disabled={ isDisable }
-          onClick={ enterCLick }
-        >
-          Enter
-        </button>
-      </Link>
-    </form>
+    <div id="login-root">
+      <form id="login-form">
+        <input
+          className='form-control login-form-items'
+          type="text"
+          name="email"
+          placeholder="Email"
+          data-testid="email-input"
+          onChange={ handleChange }
+        />
+        <input
+          className='login-form-items form-control login-input-color '
+          type="password"
+          name="password"
+          placeholder="Password"
+          data-testid="password-input"
+          onChange={ handleChange }
+        />
+        <Link to="/foods">
+          <button
+            className='btn login-form-button'
+            id="login-form-button"
+            type="button"
+            data-testid="login-submit-btn"
+            disabled={ isDisable }
+            onClick={ enterCLick }
+          >
+            Enter
+          </button>
+        </Link>
+      </form>
+    </div>
   );
 }
 

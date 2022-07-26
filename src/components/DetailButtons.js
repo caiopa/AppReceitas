@@ -111,7 +111,24 @@ function DetailButtons() {
   };
 
   return (
-    <div>
+    <div id="details-buttons-box">
+      <button
+        type="button"
+        data-testid="favorite-btn"
+        className="btn details-buttons"
+        onClick={ btnFavoriteClick }
+        src={ favImage }
+      >
+        <img src={ favImage } alt="fav button" />
+      </button>
+      <button
+        type="button"
+        data-testid="share-btn"
+        className="btn details-buttons"
+        onClick={ btnShareClick }
+      >
+        <img src={ shareIcon } alt="share button" />
+      </button>
       {
         isStartButtonRendered()
       && (
@@ -124,32 +141,13 @@ function DetailButtons() {
             id="startRecipeBtn"
             type="button"
             data-testid="start-recipe-btn"
-            className="fixed-bottom"
+            className='btn details-buttons'
           >
             { btnStartText }
           </button>
         </Link>
       )
       }
-      <button
-        type="button"
-        data-testid="favorite-btn"
-        className="mb-5"
-        onClick={ btnFavoriteClick }
-        src={ favImage }
-      >
-        <img src={ favImage } alt="fav button" />
-      </button>
-      <button
-        type="button"
-        data-testid="share-btn"
-        className="mb-5"
-        onClick={ btnShareClick }
-      >
-        {btnShareText}
-        {' '}
-        <img src={ shareIcon } alt="share button" />
-      </button>
     </div>
   );
 }

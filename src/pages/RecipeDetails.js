@@ -47,18 +47,20 @@ function RecipeDetails() {
     <div
       key={ i }
       data-testid={ `${i}-recomendation-card` }
+      className="details-recomend-card ml-3"
     >
-      <p data-testid={ `${i}-recomendation-title` }>{rec.strDrink}</p>
-      <img src={ rec.strDrinkThumb } alt="" className="recomend-img" />
+      <h3 data-testid={ `${i}-recomendation-title` }>{rec.strDrink}</h3>
+      <img src={ rec.strDrinkThumb } alt="" className="details-recomend-img" />
     </div>
   )
     : (
       <div
         key={ i }
         data-testid={ `${i}-recomendation-card` }
+        className="details-recomend-card ml-3"
       >
         <p data-testid={ `${i}-recomendation-title` }>{rec.strMeal}</p>
-        <img src={ rec.strMealThumb } alt="" className="recomend-img" />
+        <img src={ rec.strMealThumb } alt="" className="details-recomend-img" />
       </div>
     )));
 
@@ -66,30 +68,34 @@ function RecipeDetails() {
     type === 'foods'
       ? (
         <section>
-          <h2>FOODS</h2>
-          <div>
-            <h2 data-testid="recipe-title">{recipe.strMeal}</h2>
+          <h1 id="details-header">Details</h1>
+          <div id="details-details">
+            <h2 data-testid="recipe-title" id="details-title">{recipe.strMeal}</h2>
             <img
-              height={ 100 }
-              className="w-10 0"
+              className='recomend-img'
               data-testid="recipe-photo"
               src={ recipe.strMealThumb }
               alt="meal thumbnail"
             />
-          </div>
-          <div>
-            <p data-testid="recipe-category">{recipe.strCategory}</p>
-            <Ingredients recipe={ recipe } />
-            <p data-testid="instructions">{recipe.strInstructions}</p>
+            <p data-testid="recipe-category" >{recipe.strCategory}</p>
             {/* w3schools.com/html/html_youtube.asp */}
+          </div>
+          <div id="details-ingredients-box">
+            <h2>Ingredients</h2>
+            <Ingredients recipe={ recipe } />
+          </div>
+          <div id="details-instructions">
+            <h2>Instructions</h2>
+            <p data-testid="instructions" id="details-info">{recipe.strInstructions}</p>
+          </div>
+          <div id="details-video">
             <iframe
               data-testid="video"
               title={ `${recipe.strMeal} video` }
               src={ `https://www.youtube.com/embed/${youtubeID}` }
-              className="w-100"
             />
           </div>
-          <div className="d-flex scroll-menu">
+          <div id="details-carousel" >
             {
               buildCarousel()
             }
@@ -99,22 +105,34 @@ function RecipeDetails() {
       )
       : (
         <section>
-          <h2>DRINKS</h2>
-          <div>
-            <h2 data-testid="recipe-title">{recipe.strDrink}</h2>
+          <h1 id="details-header">Details</h1>
+          <div id="details-details">
+            <h2 data-testid="recipe-title" id="details-title">{recipe.strDrink}</h2>
             <img
-              className="w-75"
+              className='recomend-img'
               data-testid="recipe-photo"
               src={ recipe.strDrinkThumb }
-              alt="drink thumbnail"
+              alt="meal thumbnail"
+            />
+            <p data-testid="recipe-category" >{recipe.strAlcoholic}</p>
+            {/* w3schools.com/html/html_youtube.asp */}
+          </div>
+          <div id="details-ingredients-box">
+            <h2>Ingredients</h2>
+            <Ingredients recipe={ recipe } />
+          </div>
+          <div id="details-instructions">
+            <h2>Instructions</h2>
+            <p data-testid="instructions" id="details-info">{recipe.strInstructions}</p>
+          </div>
+          <div id="details-video">
+            <iframe
+              data-testid="video"
+              title={ `${recipe.strDrink} video` }
+              src={ `https://www.youtube.com/embed/${youtubeID}` }
             />
           </div>
-          <div>
-            <p data-testid="recipe-category">{recipe.strAlcoholic}</p>
-            <Ingredients recipe={ recipe } />
-            <p data-testid="instructions">{recipe.strInstructions}</p>
-          </div>
-          <div className="d-flex scroll-menu">
+          <div id="details-carousel" >
             {
               buildCarousel(false)
             }

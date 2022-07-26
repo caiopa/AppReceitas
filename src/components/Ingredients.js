@@ -10,7 +10,7 @@ function Ingredients({ recipe }) {
       .filter((m) => m[1] !== '' && m[1] !== null);
 
     return ings.map((ing, index) => (
-      <li key={ index } data-testid={ `${index}-ingredient-name-and-measure` }>
+      <li key={ index } data-testid={ `${index}-ingredient-name-and-measure` } className="ingredients-li">
         {
           measures[index] ? `${ing[1]} (${measures[index][1]}) `
             : `${ing[1]}`
@@ -20,12 +20,9 @@ function Ingredients({ recipe }) {
   };
 
   return (
-    <label htmlFor="ingsList">
-      Ingredients:
-      <ul id="ingsList">
-        {ingredientsBuilder()}
-      </ul>
-    </label>
+    <ul id="details-ingredients">
+      {ingredientsBuilder()}
+    </ul>
   );
 }
 

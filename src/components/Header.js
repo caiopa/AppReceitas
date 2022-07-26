@@ -63,20 +63,24 @@ class Header extends React.Component {
 
     return (
       <div>
-        <Link to="/profile">
-          <img src={ profileIcon } alt="profile_icon" data-testid="profile-top-btn" />
-        </Link>
-        {search && (
-          <input
-            type="image"
-            src={ searchIcon }
-            alt="search_icon"
-            onClick={ this.handleSearchClick }
-            data-testid="search-top-btn"
-          />
-        )}
-        {searchActive && inputs}
-        <h1 data-testid="page-title">{title}</h1>
+        <div id="header-header">
+          <Link to="/profile">
+            <img src={ profileIcon } alt="profile_icon" data-testid="profile-top-btn" />
+          </Link>
+          <h1 data-testid="page-title">{title}</h1>
+          {search && (
+            <input
+              type="image"
+              src={ searchIcon }
+              alt="search_icon"
+              onClick={ this.handleSearchClick }
+              data-testid="search-top-btn"
+            />
+          )}
+        </div>
+        <div id="header-filter">
+          {searchActive && inputs}
+        </div>
       </div>
     );
   }
