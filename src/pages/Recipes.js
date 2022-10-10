@@ -62,7 +62,7 @@ function Recipes(props) {
   const categoryButtons = (
     <div id="recipe-category">
       <button
-        className='recipe-category-buttons btn '
+        className="recipe-category-buttons btn "
         type="button"
         data-testid="All-category-filter"
         onClick={ handleAllClick }
@@ -72,7 +72,7 @@ function Recipes(props) {
       {
         defaultButtons.map((b) => (
           <button
-            className='recipe-category-buttons btn ml-3'
+            className="recipe-category-buttons btn ml-3"
             type="button"
             data-testid={ `${b}-category-filter` }
             key={ b }
@@ -99,7 +99,7 @@ function Recipes(props) {
             : defaultResults
         }
       />
-      <div style={{height: '4.6rem'}} />
+      <div style={ { height: '4.6rem' } } />
     </section>
   );
 }
