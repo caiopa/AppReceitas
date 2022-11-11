@@ -2,7 +2,7 @@
 
 ---
 Projeto em grupo do módulo de Front-end do curso de Desenvolvimento Web da Trybe, desenvolvido por
-<a href="">Caio Pereira</>,<a href="">Caetano Almeida</>, <a href="">Vinícius Kobs</>, <a href="">Bruno</>, <a href="">Elzo</>
+<a href="">Caio Pereira</a>,<a href="">Caetano Almeida</a>, <a href="">Vinícius Kobs</a>, <a href="">Bruno</a>, <a href="">Elzo</a>
 
 # Objetivo
 O objetivo é colocar em prática tudo o que você aprendeu sobre React Context API e React Hooks,
