@@ -1,7 +1,6 @@
 # Projeto AppReceitas
 
-Projeto em grupo do módulo de Front-end do curso de Desenvolvimento Web da Trybe, desenvolvido por
-<a href="">Caio Pereira</a>, <a href="">Caetano Almeida</a>, <a href="">Vinícius Kobs</a>, <a href="">Bruno</a>, <a href="">Elzo</a>
+Projeto em grupo do módulo de Front-end do curso de Desenvolvimento Web da [Trybe](https://www.betrybe.com/), desenvolvido por  [Caio Pereira](https://github.com/caiopa), [Caetano Almeida](https://github.com/caealmeida), [Vinícius Kobs](https://github.com/RehbeinKobs), [Bruno](https://github.com/BrunoOliveiraaa), [Elzo](https://www.linkedin.com/in/elzo-almeida/)
 
 
 # Objetivo
